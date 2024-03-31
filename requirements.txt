@@ -1,0 +1,5 @@
+gradio>=4.7.0
+TensorFlow>=2.13.0
+transformers==4.35.2
+coverage==4.5.4
+tf-keras==2.16.0
