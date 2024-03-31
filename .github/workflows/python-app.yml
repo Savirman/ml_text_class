@@ -12,6 +12,14 @@ permissions:
   contents: read
 
 jobs:
+  send-notification:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Send Telegram Notification
+      env:
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      run: curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage -d chat_id=-4096912259 -d text="${{ github.branch }} ${{ github.actor }} ${{ github.event_name }}  in master ${{ github.branch_name }}"  
   build:
     runs-on: ubuntu-latest
     steps:
