@@ -34,7 +34,6 @@ jobs:
   test:
     runs-on: [ubuntu-latest]
     steps:
-    - name: Test with pytest
     - uses: actions/checkout@master
     - uses: actions/setup-python@v3
       with:
@@ -42,12 +41,12 @@ jobs:
           architecture: "x64"
     - name: Upgrade pip
       run: pip install --upgrade pip
-    - name: Install requirements
+    - name: Install dependencies
       run: |
         pip install -r requirements.txt
         pip install pytest
-        - name: Run tests
-        run: pytest src/test_main.py
+    - name: Run tests
+      run: pytest src/test_main.py
     - name: Run coverage
       run: coverage run -m pytest src/test_main.py
     - name: Tests report
